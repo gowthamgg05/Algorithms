@@ -41,15 +41,6 @@ void removeSpam(vector<struct EmailMsg> &v){
 	}
 	cout << "\n" << count << " spam(s) removed";
 }
-//Structure of EmailMsg
-struct EmailMsg{
-        string to;
-        string from;
-        string subject;
-        string message;
-        int data;
-        int time;
-};
 int main()
 {
 	//Vector of 'EmailMsg' structure
