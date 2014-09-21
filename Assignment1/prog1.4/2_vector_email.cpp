@@ -32,15 +32,24 @@ void removeSpam(vector<struct EmailMsg> &v){
 	for(vector<struct EmailMsg>::iterator it=v.begin();it!=v.end();){
 		//Removes email with subject starting with 'spam' or 'SPAM'
 		if(it->subject.substr(0,4)=="SPAM" || it->subject.substr(0,4)=="spam"){	
-			cout << "Its a Spam. Removing Spam";
+			cout << "Its a Spam. Removing Spam\n";
 			it = v.erase(it);	//now the iterator points to the next element. so no need to increment it.
 			count++;
 		}
 		else
 			it++;
 	}
-	cout << count << " spam(s) removed";
+	cout << "\n" << count << " spam(s) removed";
 }
+//Structure of EmailMsg
+struct EmailMsg{
+        string to;
+        string from;
+        string subject;
+        string message;
+        int data;
+        int time;
+};
 int main()
 {
 	//Vector of 'EmailMsg' structure
