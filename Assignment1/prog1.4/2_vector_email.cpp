@@ -29,14 +29,17 @@ void displayEmailStructure(vector<struct EmailMsg> &v){
 //Removes spam emails from the vector
 void removeSpam(vector<struct EmailMsg> &v){
 	int count=0;
-	for(vector<struct EmailMsg>::iterator it=v.begin();it!=v.end();it++){
-		if(it->subject.substr(0,4)=="SPAM" || it->subject.substr(0,4)=="spam"){
+	for(vector<struct EmailMsg>::iterator it=v.begin();it!=v.end();){
+		//Removes email with subject starting with 'spam' or 'SPAM'
+		if(it->subject.substr(0,4)=="SPAM" || it->subject.substr(0,4)=="spam"){	
 			cout << "Its a Spam. Removing Spam";
+			it = v.erase(it);	//now the iterator points to the next element. so no need to increment it.
 			count++;
 		}
+		else
+			it++;
 	}
 	cout << count << " spam(s) removed";
-	
 }
 int main()
 {
@@ -44,7 +47,7 @@ int main()
 	vector<struct EmailMsg> v;
 	//Initialize the structure
 	struct EmailMsg e;
-	e = createEmailStructure("Gowtham","gg","spamsdfsdfsdf","Helllo",2,24);
+	e = createEmailStructure("Gowtham","gg","spamfsdfsdf","Helllo",2,24);
 	//Push it to the vector
 	v.push_back(e);
 	e = createEmailStructure("Gowtham","gg","SPAM measdkf ","Helllo",2,24);
@@ -52,4 +55,5 @@ int main()
 	//Display EmailMsgs
 	displayEmailStructure(v);
 	removeSpam(v);
+	displayEmailStructure(v);
 }
