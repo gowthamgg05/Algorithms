@@ -1,12 +1,19 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-int main(){
-	vector<int> v(10,0);
-	for(vector<int>::iterator i=v.begin();i!=v.end();i++){
-		(*i)++;
-		cout << "5";
-	}
+void insertElements(vector<int>*,int,int);
+void insertElements(vector<int> &v,int n,int times)
+{
+        for(int i=0;i<times;i++){
+                for(int j=0;j<n;j++){
+                        v.push_back(j);
+                }
+        }
+}
+int main()
+{
+	vector<int> v;
+	insertElements(v,10,1);
 	for(vector<int>::iterator i=v.begin();i!=v.end();i++){
                 cout << *i << "\n";
         }
