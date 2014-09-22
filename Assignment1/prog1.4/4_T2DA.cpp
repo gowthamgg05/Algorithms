@@ -32,10 +32,6 @@ bool sortCriteria(Property p1,Property p2){
 int main(int argc,char **argv)
 {
 	vector<Property> v;
-	vector<int> n;
-	n.push_back(10);
-	n.push_back(20);
-	n.push_back(15);
 	int noOfProperties;
 	float radius,cost,coOrdinates;
 	Dimension d[3];
