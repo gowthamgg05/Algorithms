@@ -2,12 +2,13 @@
 #include<fstream>
 #include<vector>
 #include<stdlib.h>	//abs()
+#include<algorithm>
 using namespace std;
 
 //Structure to store co-ordinates
 typedef struct dimension{
-	float x;
-	float y;
+	int x;
+	int y;
 } Dimension;
 
 //Structure to store property information
@@ -15,9 +16,26 @@ typedef struct property{
 	string propertyName;
 	float price;
 } Property;
-					      					          
+
+//Display the property Information
+void displayPropertyInfo(vector<Property> v){
+	for(vector<Property>::iterator it=v.begin();it!=v.end();it++){
+        	cout << "Property Type : " << it->propertyName << "\n";
+                cout << "Value of the property : " << it->price << "\n\n";
+        }
+}
+
+//Criteria for Sorting
+bool sortCriteria(Property p1,Property p2){
+	return (p1.price > p2.price);
+}					      					          
 int main(int argc,char **argv)
 {
+	vector<Property> v;
+	vector<int> n;
+	n.push_back(10);
+	n.push_back(20);
+	n.push_back(15);
 	int noOfProperties;
 	float radius,cost,coOrdinates;
 	Dimension d[3];
@@ -26,7 +44,6 @@ int main(int argc,char **argv)
 	{
                 //No.of properties
 		fp >> noOfProperties;
-		vector<Property> v;
 		for(int i=0;i<noOfProperties;i++){
 			//No.of co-ordinates
 			fp >> coOrdinates;
@@ -55,14 +72,14 @@ int main(int argc,char **argv)
 				continue;
 			}
 		}
-		for(vector<Property>::iterator it=v.begin();it!=v.end();it++){
-               	        cout << "Property Type : " << it->propertyName << "\n";
-                       	cout << "Value of the property : " << it->price << "\n\n";
-        	}
 	}else{
 		cout << "\nFile not found at " << argv[1] << "\nPlease mention the full path of the file";
 		cout << "\nSpecify the path in double quotes";
 		cout << "\nMake sure the file path doesn't have white space character(s)\n";
 	}
 	fp.close();
+	displayPropertyInfo(v);
+	sort(v.begin(),v.end(),sortCriteria);	//sort based on 'sortCriteria(Property,Property)'
+	cout << "\n\nSORTING BASED ON PROPERTY VALUE\n";
+	displayPropertyInfo(v);
 }
