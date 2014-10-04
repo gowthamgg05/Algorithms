@@ -90,6 +90,8 @@ void heapSort(vector<T> &v,int (cmpFn)(T a, T b) = ascendingOrder){
 	}
 }
 
+//Heap Sort Reference - http://staff.ustc.edu.cn/~csli/graduate/algorithms/book6/chap07.htm
+
 //main fucntion - creation and sorting of vectors with integer,float and character elements
 int main(){
 	vector<int> v;
