@@ -1,33 +1,47 @@
 #include<iostream>
 #include<vector>
 using namespace std;
+
+//Comparison fucntion
 template <class T>
 int ascendingOrder(T a,T b){
 	if(a==b)
 		return 0;
 	return(a<b?-1:1);
 }
+
+//Comparison Function
 template <class T>
 int descendingOrder(T a,T b){
         if(a==b)
                 return 0;
         return(a>b?-1:1);
 }
+
+//Display the elements
 template <class T>
 void display(vector<T> &v){
 	for(int i=0;i<v.size();i++){
 		cout << v[i] << "\t";
 	}
 }
+
+//HeapSort - Finding left child
 int leftChild(int i){
 	return i*2+1;
 }
+
+//HeapSort - Finding right child
 int rightChild(int i){
 	return i*2+2;
 }
+
+//HeapSort - Finding parent
 int parent(int i){
 	return (i-1)/2;
 }
+
+//HeapSort - Swap two template elements
 template <class T>
 void swap(vector<T> &v,int firstIndex,int secondIndex){
 	T temp;
@@ -35,6 +49,8 @@ void swap(vector<T> &v,int firstIndex,int secondIndex){
 	v[firstIndex] = v[secondIndex];
 	v[secondIndex] = temp;
 }
+
+//HeapSort - To maintain the heap property
 template <class T>
 void heapify(vector<T> &v,int i,int heapSize,int (cmpFn)(T a, T b)){
 	int l = leftChild(i);
@@ -51,6 +67,8 @@ void heapify(vector<T> &v,int i,int heapSize,int (cmpFn)(T a, T b)){
 		heapify(v,largest,heapSize,cmpFn);
 	}
 }
+
+//HeapSort - Builds a heap from the array by calling Heapify
 template <class T>
 void buildHeap(vector<T> &v,int (cmpFn)(T a,T b)){
 	int heapSize = v.size()-1;
@@ -59,6 +77,8 @@ void buildHeap(vector<T> &v,int (cmpFn)(T a,T b)){
 		heapify(v,i,heapSize,cmpFn);
 	}
 }
+
+//HeapSort - performs sorting of template elements based on comparision function
 template <class T>
 void heapSort(vector<T> &v,int (cmpFn)(T a, T b) = ascendingOrder){
 	buildHeap(v,cmpFn);
@@ -69,6 +89,8 @@ void heapSort(vector<T> &v,int (cmpFn)(T a, T b) = ascendingOrder){
 		heapify(v,0,heapSize,cmpFn);
 	}
 }
+
+//main fucntion - creation and sorting of vectors with integer,float and character elements
 int main(){
 	vector<int> v;
 	v.push_back(6);
