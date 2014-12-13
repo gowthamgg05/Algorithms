@@ -7,7 +7,7 @@ template <class T>
 int ascendingOrder(T a,T b){
 	if(a==b)
 		return 0;
-	return(a<b?-1:1);
+:q	return(a<b?-1:1);
 }
 
 //Comparison Function
